@@ -19,7 +19,13 @@ dir_tree = {
 #Classe gerenciadora de Arquivos
 class FileMovementHandler(FileSystemEventHandler):
     def on_created(self, event):
-        print(event)
+        name,ext = os.path.splitext(event.src_path)
+        for key,value in dir_tree.items():
+            if ext in value :
+                file_name = os.path.basename(event.src_path)
+                path1 = from_dir + "/" + file_name
+                path2 = to_dir + "/" + key
+                path3 = to_dir + "/" + key + "/" + file_name
 
 
 #instanciando/inicializando a classe Gerenciadora de Arquivos
