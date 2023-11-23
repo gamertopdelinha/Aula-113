@@ -29,8 +29,13 @@ class FileMovementHandler(FileSystemEventHandler):
                 path3 = to_dir + "/" + key + "/" + file_name
                 # if os.path.exists(to_dir + "/" + key):
                 if os.path.exists(path2):
-                    print(f"movendo {file_name}")
-                    shutil.move(path1,path3)
+                    print("diretório existe")
+                    if os.path.exists(path3):
+                        print(f"arquivo já existente em {key}")
+                        print(f"renomeando arquivo {file_name}")
+                    else:
+                        print(f"movendo {file_name}")
+                        shutil.move(path1,path3)
                 else:
                     os.makedirs(path2)
                     print(f"movendo {file_name}")
@@ -57,6 +62,4 @@ try:
 except KeyboardInterrupt:
     print ("interronpido")
     observer.stop()
-
-
 
