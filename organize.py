@@ -33,6 +33,7 @@ class FileMovementHandler(FileSystemEventHandler):
                     if os.path.exists(path3):
                         print(f"arquivo já existente em {key}")
                         print(f"renomeando arquivo {file_name}")
+                        newfilename = os.path.splitext(file_name)[0] + str(random.randint(0,99)) + os.path.splitext(file_name)[1]
                     else:
                         print(f"movendo {file_name}")
                         shutil.move(path1,path3)
